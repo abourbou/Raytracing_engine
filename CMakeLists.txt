@@ -19,5 +19,24 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "RelWithDebInfo" "Release")
 endif()
 
+#-------------------------
+#  Find dependencies
+#-------------------------
+
+find_package(SDL2 REQUIRED)
+include_directories(${SDL2_INCLUDE_DIRS})
+
+#-------------------------
+#  Build and install
+#-------------------------
+
+
 add_executable(RaytracingEngine
-                src/main.cpp)
+                src/main.cpp
+                src/AppRenderer.cpp
+                src/ImageHandler.cpp
+                )
+
+target_include_directories(RaytracingEngine
+                            PUBLIC include)
+target_link_libraries(RaytracingEngine ${SDL2_LIBRARIES})
