@@ -26,17 +26,37 @@ endif()
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 
+find_package(Eigen3 3.4 REQUIRED)
+
+
 #-------------------------
 #  Build and install
 #-------------------------
 
+set(APP_SOURCES
+    AppRenderer.cpp
+    ImageHandler.cpp)
+list(TRANSFORM APP_SOURCES PREPEND src/app/)
+
+
+set(ENGINE_SOURCES
+    Camera.cpp)
+list(TRANSFORM ENGINE_SOURCES PREPEND src/engine/)
+
+message(INFO ${ENGINE_SOURCES})
 
 add_executable(RaytracingEngine
                 src/main.cpp
-                src/AppRenderer.cpp
-                src/ImageHandler.cpp
+                ${APP_SOURCES}
+                ${ENGINE_SOURCES}
                 )
 
 target_include_directories(RaytracingEngine
-                            PUBLIC include)
-target_link_libraries(RaytracingEngine ${SDL2_LIBRARIES})
+                            PUBLIC  include
+                                    include/app
+                                    include/engine
+                                    )
+
+target_link_libraries(RaytracingEngine
+                        ${SDL2_LIBRARIES}
+                        Eigen3::Eigen)
