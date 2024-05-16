@@ -1,0 +1,14 @@
+{
+    "version": "2.0.0",
+    "configurations": [
+        {
+            "name": "Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/build/RaytracingEngine",
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": "build_debug",
+            "externalConsole": false,
+        }
+    ]
+}

@@ -33,5 +33,4 @@
 
 # My environment
 build
-.vscode
-.vscode/*
+.vscode/settings.json
