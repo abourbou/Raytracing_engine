@@ -18,12 +18,17 @@ bool AppRenderer::Initialize()
     if (!this->Window)
         return false;
 
-    // Initialise the renderer
+    // Initialise the SDL renderer
     this->Renderer = SDL_CreateRenderer(this->Window, -1, 0);
 
     // Initialize the image
     this->ImageInstance = ImageHandler();
     this->ImageInstance.Initialize(WINDOW_WIDTH, WINDOW_HEIGHT, this->Renderer);
+
+    // Init engine
+    SceneOptions opt;
+    opt.SetFov(90.);
+    this->Engine = std::make_unique<RayTracingRenderer>(opt);
 
     return true;
 }
@@ -69,6 +74,7 @@ void AppRenderer::DoLoop()
 
 void AppRenderer::Rendering()
 {
+    this->Engine->render();
     this->ImageInstance.Display();
     SDL_RenderPresent(this->Renderer);
 }

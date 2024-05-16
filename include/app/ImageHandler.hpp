@@ -6,7 +6,6 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
-// TODO Test it
 #define RGB_TO_ARGB888(red, green, blue) 0xFF000000 | (red << 16) | (green << 8) | blue
 
 class ImageHandler

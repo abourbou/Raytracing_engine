@@ -2,8 +2,10 @@
 #include <iostream>
 
 //TODO Use a linter
+//TODO create exception and replace assert by it
 
 #include "AppRenderer.hpp"
+#include "Camera.hpp"
 
 int main(int argc, char **argv)
 {

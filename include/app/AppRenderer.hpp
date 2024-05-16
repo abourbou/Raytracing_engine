@@ -3,6 +3,8 @@
 
 #include <SDL2/SDL.h>
 #include "ImageHandler.hpp"
+#include "RaytracingRenderer.hpp"
+#include "SceneOptions.hpp"
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
@@ -26,4 +28,5 @@ class AppRenderer
         bool IsRunning = false;
         SDL_Renderer *Renderer = nullptr;
         SDL_Window *Window = nullptr;
+        std::unique_ptr<RayTracingRenderer> Engine;
 };
