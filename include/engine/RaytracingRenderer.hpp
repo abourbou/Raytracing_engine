@@ -14,7 +14,8 @@ class Lights {};
 class RayTracingRenderer {
   public:
     RayTracingRenderer() = delete;
-    RayTracingRenderer(SceneOptions options) {
+    RayTracingRenderer(const SceneOptions& options)
+        : Options(std::make_unique<SceneOptions>(options)) {
         this->Cam = std::make_unique<Camera>(options.GetFov(), options.GetWidthScreen(),
                                              options.GetHeightScreen());
     };
@@ -24,4 +25,5 @@ class RayTracingRenderer {
     std::vector<Objects> SceneObjects;
     std::vector<Lights> SceneLights;
     std::unique_ptr<Camera> Cam;
+    std::unique_ptr<SceneOptions> Options;
 };

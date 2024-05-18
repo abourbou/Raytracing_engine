@@ -24,6 +24,8 @@ bool AppRenderer::Initialize() {
     // Init engine
     SceneOptions opt;
     opt.SetFov(180.);
+    opt.SetHeightScreen(WINDOW_HEIGHT);
+    opt.SetWidthScreen(WINDOW_WIDTH);
     this->Engine = std::make_unique<RayTracingRenderer>(opt);
 
     return true;

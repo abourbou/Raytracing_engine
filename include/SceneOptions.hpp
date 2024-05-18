@@ -22,7 +22,6 @@ class InvalidInput : public std::exception {
 class SceneOptions {
   public:
     SceneOptions(){};
-    SceneOptions(double fov, uint32_t widthScreen, uint32_t heightScreen);
 
     // Getter
     GetMacro(Fov, double);

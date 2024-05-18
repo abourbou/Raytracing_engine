@@ -41,7 +41,8 @@ list(TRANSFORM APP_SOURCES PREPEND src/app/)
 
 set(ENGINE_SOURCES
     Camera.cpp
-    RaytracingRenderer.cpp)
+    RaytracingRenderer.cpp
+    objects/Sphere.cpp)
 list(TRANSFORM ENGINE_SOURCES PREPEND src/engine/)
 
 message(INFO ${ENGINE_SOURCES})
@@ -57,6 +58,7 @@ target_include_directories(RaytracingEngine
                             PUBLIC  include
                                     include/app
                                     include/engine
+                                    include/engine/objects
                                     include/utils
                                     )
 
