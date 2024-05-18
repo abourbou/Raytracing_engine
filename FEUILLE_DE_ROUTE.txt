@@ -7,3 +7,7 @@ Camera model creation + reaytracing with a sphere
 Camera ray done
 creating options for the scene
 connect the engine to the app
+
+18/05/2024
+- use exception
+- use formatter
