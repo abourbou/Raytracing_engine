@@ -2,7 +2,7 @@
 #include <exception>
 #include <iostream>
 
-// TODO Use a linter
+// TODO Create tests
 
 #include "AppRenderer.hpp"
 #include "Camera.hpp"

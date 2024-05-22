@@ -16,21 +16,24 @@
  * referential with X the width of the screen, Y the height of the screen and -Z the direction of
  * the camera
  */
+// TODO Add the movements of the camera
 class Camera {
   public:
     Camera() = delete;
     Camera(double fov, uint32_t pixelWidth, uint32_t pixelHeight);
     Ray GetRay(uint32_t x, uint32_t y) const;
 
-    // TODO Add later the movements of the camera
+    void SetPixelParameters(uint32_t pixelWidth, uint32_t pixelHeight);
+    void SetFov(double fov);
 
   private:
-    // Width and height of the number of pixels in the image
+    // Pixel parameters
     uint32_t PixelWidth, PixelHeight;
+    double ImageAspectRatio;
 
     Eigen::Vector3d CameraPos;
     Eigen::Matrix3d CameraRef;
 
     double Fov;
-    double ImageAspectRatio;
+    double TanHalfFov;
 };
