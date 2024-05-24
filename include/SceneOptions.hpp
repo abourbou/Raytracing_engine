@@ -5,7 +5,7 @@
 #include <exception>
 #include <iostream>
 
-#define GetMacro(name, type)                                                                       \
+#define GetMacro(name, type)                                                   \
     type Get##name() const { return name; }
 
 class InvalidInput : public std::exception {
@@ -24,17 +24,17 @@ class SceneOptions {
     SceneOptions(){};
 
     // Getter
-    GetMacro(Fov, double);
+    GetMacro(Fov, float);
     GetMacro(WidthScreen, uint32_t);
     GetMacro(HeightScreen, uint32_t);
 
     // Setter
-    void SetFov(double fov);
+    void SetFov(float fov);
     void SetWidthScreen(uint32_t WidthScreen);
     void SetHeightScreen(uint32_t WidthScreen);
 
   private:
-    double Fov = 90.;
+    float Fov = 90.;
     uint32_t WidthScreen = 1280;
     uint32_t HeightScreen = 720;
 };

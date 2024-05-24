@@ -6,10 +6,11 @@
 class Sphere : public Object {
   public:
     Sphere() = delete;
-    Sphere(Eigen::Vector3d pos, double radius) : Position(pos), Radius(radius) {}
-    double intersect(const Ray& ray);
+    Sphere(Eigen::Vector3f center, float radius)
+        : Center(center), Radius(radius) {}
+    float intersect(const Ray& ray);
 
   private:
-    Eigen::Vector3d Position;
-    double Radius;
+    Eigen::Vector3f Center;
+    float Radius;
 };

@@ -12,28 +12,28 @@
  * using
  * https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-generating-camera-rays/generating-camera-rays.html
  *
- * The camera position is (0, 0, 0) and the camera referential is (X, Y, -Z) from the world
- * referential with X the width of the screen, Y the height of the screen and -Z the direction of
- * the camera
+ * The camera position is (0, 0, 0) and the camera referential is (X, Y, -Z)
+ * from the world referential with X the width of the screen, Y the height of
+ * the screen and -Z the direction of the camera
  */
 // TODO Add the movements of the camera
 class Camera {
   public:
     Camera() = delete;
-    Camera(double fov, uint32_t pixelWidth, uint32_t pixelHeight);
+    Camera(float fov, uint32_t pixelWidth, uint32_t pixelHeight);
     Ray GetRay(uint32_t x, uint32_t y) const;
 
     void SetPixelParameters(uint32_t pixelWidth, uint32_t pixelHeight);
-    void SetFov(double fov);
+    void SetFov(float fov);
 
   private:
     // Pixel parameters
     uint32_t PixelWidth, PixelHeight;
-    double ImageAspectRatio;
+    float ImageAspectRatio;
 
-    Eigen::Vector3d CameraPos;
-    Eigen::Matrix3d CameraRef;
+    Eigen::Vector3f CameraPos;
+    Eigen::Matrix3f CameraRef;
 
-    double Fov;
-    double TanHalfFov;
+    float Fov;
+    float TanHalfFov;
 };

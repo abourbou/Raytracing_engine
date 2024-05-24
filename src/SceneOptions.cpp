@@ -1,7 +1,7 @@
 
 #include "SceneOptions.hpp"
 
-void SceneOptions::SetFov(double fov) {
+void SceneOptions::SetFov(float fov) {
     if (fov < 30. || fov > 150.)
         throw InvalidInput("fov");
     this->Fov = fov;

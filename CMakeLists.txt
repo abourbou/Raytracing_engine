@@ -45,6 +45,10 @@ set(ENGINE_SOURCES
     objects/Sphere.cpp)
 list(TRANSFORM ENGINE_SOURCES PREPEND src/engine/)
 
+set(UTILS_SOURCES
+    engineTools.cpp)
+list(TRANSFORM UTILS_SOURCES PREPEND src/utils/)
+
 message(INFO ${ENGINE_SOURCES})
 
 add_executable(RaytracingEngine
@@ -52,6 +56,7 @@ add_executable(RaytracingEngine
                 src/SceneOptions.cpp
                 ${APP_SOURCES}
                 ${ENGINE_SOURCES}
+                ${UTILS_SOURCES}
                 )
 
 target_include_directories(RaytracingEngine

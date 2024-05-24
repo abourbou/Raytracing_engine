@@ -2,8 +2,9 @@
 #pragma once
 
 #include "engineTools.hpp"
+#include <Eigen/Dense>
 
 class Object {
   public:
-    virtual double intersect(const Ray& ray) = 0;
+    virtual float intersect(const Ray& ray) = 0;
 };
