@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-#define RGB_TO_ARGB888(red, green, blue) 0xFF000000 | (red << 16) | (green << 8) | blue
+#include "engineTools.hpp"
 
 class ImageHandler {
   public:
@@ -15,8 +15,10 @@ class ImageHandler {
 
     void Initialize(const int xSize, const int ySize, SDL_Renderer* pRenderer);
     // Change a pixel color
-    void SetPixel(const int x, const int y, const uint8_t red, const uint8_t green,
-                  const uint8_t blue);
+    void SetPixel(const int x, const int y, const uint8_t red,
+                  const uint8_t green, const uint8_t blue);
+    void SetPixel(const int x, const int y, const uint32_t color);
+
     void Display();
 
   private:

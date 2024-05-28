@@ -1,13 +1,14 @@
 
 #include "RaytracingRenderer.hpp"
+#include "engineTools.hpp"
 
 RayTracingRenderer::RayTracingRenderer(const SceneOptions& options)
     : Options(std::make_unique<SceneOptions>(options)) {
     this->Cam = std::make_unique<Camera>(
         options.GetFov(), options.GetWidthScreen(), options.GetHeightScreen());
 
-    this->SceneObjects.emplace_back(
-        std::make_unique<Sphere>(Eigen::Vector3f(0., 0., -2.), 1.));
+    this->SceneObjects.emplace_back(std::make_unique<Sphere>(
+        Eigen::Vector3f(0., 0., -2.), 1., RGB_TO_ARGB888(255, 0, 0)));
 };
 
 void RayTracingRenderer::render(ImageHandler& imageInstance) {
@@ -27,8 +28,8 @@ void RayTracingRenderer::render(ImageHandler& imageInstance) {
                 }
             }
             if (closestObj != this->SceneObjects.end()) {
-                // Set the color to red
-                imageInstance.SetPixel(x, y, 255, 0, 0);
+                // Set the color to the object
+                imageInstance.SetPixel(x, y, (*closestObj)->getColor());
             }
         }
     }

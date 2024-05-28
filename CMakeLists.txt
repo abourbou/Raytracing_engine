@@ -45,9 +45,8 @@ set(ENGINE_SOURCES
     objects/Sphere.cpp)
 list(TRANSFORM ENGINE_SOURCES PREPEND src/engine/)
 
-set(UTILS_SOURCES
-    engineTools.cpp)
-list(TRANSFORM UTILS_SOURCES PREPEND src/utils/)
+# set(UTILS_SOURCES)
+# list(TRANSFORM UTILS_SOURCES PREPEND src/utils/)
 
 add_executable(RaytracingEngine
                 src/main.cpp

@@ -4,6 +4,9 @@
 #include <Eigen/Dense>
 #include <math.h>
 
+#define RGB_TO_ARGB888(red, green, blue)                                       \
+    0xFF000000 | (red << 16) | (green << 8) | blue
+
 struct Ray {
 
     Ray() = delete;
@@ -15,6 +18,3 @@ struct Ray {
 };
 
 inline float deg2rad(const float& deg) { return deg * M_PI / 180; }
-
-bool solveQuadratic(const float& a, const float& b, const float& c, float& x0,
-                    float& x1);

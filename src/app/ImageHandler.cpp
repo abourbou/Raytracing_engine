@@ -11,7 +11,8 @@ ImageHandler::~ImageHandler() {
 }
 
 // Function to initialize.
-void ImageHandler::Initialize(const int xSize, const int ySize, SDL_Renderer* pRenderer) {
+void ImageHandler::Initialize(const int xSize, const int ySize,
+                              SDL_Renderer* pRenderer) {
     // Resize image data arrays.
     PixelColor.resize(xSize * ySize);
 
@@ -23,15 +24,20 @@ void ImageHandler::Initialize(const int xSize, const int ySize, SDL_Renderer* pR
     this->RendererPtr = pRenderer;
 
     // Create texture used for pixels
-    this->TexturePtr = SDL_CreateTexture(this->RendererPtr, SDL_PIXELFORMAT_ARGB8888,
-                                         SDL_TEXTUREACCESS_STREAMING, this->XSize, this->YSize);
+    this->TexturePtr = SDL_CreateTexture(
+        this->RendererPtr, SDL_PIXELFORMAT_ARGB8888,
+        SDL_TEXTUREACCESS_STREAMING, this->XSize, this->YSize);
     this->InitColors();
 }
 
 // Function to set pixels.
-void ImageHandler::SetPixel(const int x, const int y, const uint8_t red, const uint8_t green,
-                            const uint8_t blue) {
+void ImageHandler::SetPixel(const int x, const int y, const uint8_t red,
+                            const uint8_t green, const uint8_t blue) {
     PixelColor.at(x + y * this->XSize) = RGB_TO_ARGB888(red, green, blue);
+}
+
+void ImageHandler::SetPixel(const int x, const int y, const uint32_t color) {
+    PixelColor.at(x + y * this->XSize) = color;
 }
 
 // Function to generate the display.
