@@ -53,20 +53,12 @@ void AppRenderer::HandleEvents(SDL_Event* event) {
         IsRunning = false;
 }
 
-void AppRenderer::DoLoop() {
-    float ratio = (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT;
-    for (int y = 0; y < WINDOW_HEIGHT; ++y) {
-        int x_floor = std::max((int)std::floor((float)y * ratio), 0);
-        int x_ceil = std::min((int)std::ceil((float)y * ratio), WINDOW_WIDTH);
+void AppRenderer::DoLoop() {}
 
-        this->ImageInstance.SetPixel(x_floor, y, 255, 255, 255);
-        this->ImageInstance.SetPixel(x_ceil, y, 255, 255, 255);
-    }
-}
 #include <chrono>
 void AppRenderer::Rendering() {
     auto start = std::chrono::steady_clock::now();
-    this->Engine->render();
+    this->Engine->render(this->ImageInstance);
     auto end = std::chrono::steady_clock::now();
     auto duration =
         std::chrono::duration_cast<std::chrono::milliseconds>(end - start);

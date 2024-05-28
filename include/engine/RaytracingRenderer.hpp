@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "Camera.hpp"
+#include "ImageHandler.hpp"
 #include "Object.hpp"
 #include "SceneOptions.hpp"
 #include "Sphere.hpp"
@@ -17,7 +18,7 @@ class RayTracingRenderer {
   public:
     RayTracingRenderer() = delete;
     RayTracingRenderer(const SceneOptions& options);
-    void render();
+    void render(ImageHandler& imageInstance);
 
   private:
     std::vector<std::unique_ptr<Object>> SceneObjects;

@@ -49,8 +49,6 @@ set(UTILS_SOURCES
     engineTools.cpp)
 list(TRANSFORM UTILS_SOURCES PREPEND src/utils/)
 
-message(INFO ${ENGINE_SOURCES})
-
 add_executable(RaytracingEngine
                 src/main.cpp
                 src/SceneOptions.cpp

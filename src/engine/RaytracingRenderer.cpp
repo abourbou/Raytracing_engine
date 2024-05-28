@@ -10,7 +10,7 @@ RayTracingRenderer::RayTracingRenderer(const SceneOptions& options)
         std::make_unique<Sphere>(Eigen::Vector3f(0., 0., -2.), 1.));
 };
 
-void RayTracingRenderer::render() {
+void RayTracingRenderer::render(ImageHandler& imageInstance) {
     for (int x = 0; x < this->Options->GetWidthScreen(); ++x) {
         for (int y = 0; y < this->Options->GetHeightScreen(); ++y) {
             auto ray = this->Cam->GetRay(x, y);
@@ -19,10 +19,16 @@ void RayTracingRenderer::render() {
             float buffDist;
             for (auto obj = this->SceneObjects.begin();
                  obj < this->SceneObjects.end(); ++obj) {
-                if ((buffDist = (*obj)->intersect(ray)) < maxDist) {
+                buffDist = -1.;
+                buffDist = (*obj)->intersect(ray);
+                if (buffDist > 0. && buffDist < maxDist) {
                     maxDist = buffDist;
                     closestObj = obj;
                 }
+            }
+            if (closestObj != this->SceneObjects.end()) {
+                // Set the color to red
+                imageInstance.SetPixel(x, y, 255, 0, 0);
             }
         }
     }
